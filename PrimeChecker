@@ -1,0 +1,34 @@
+public class PrimeChecker {
+
+    // Function to check if a number is prime
+    public static boolean isPrime(int number) {
+        if (number <= 1) {
+            return false; // Numbers less than or equal to 1 are not prime
+        }
+        if (number <= 3) {
+            return true; // 2 and 3 are prime numbers
+        }
+        if (number % 2 == 0 || number % 3 == 0) {
+            return false; // Divisible by 2 or 3, not prime
+        }
+        
+        // Check for prime by testing divisors up to the square root of the number
+        for (int i = 5; i * i <= number; i += 6) {
+            if (number % i == 0 || number % (i + 2) == 0) {
+                return false;
+            }
+        }
+        
+        return true; // If no divisors found, the number is prime
+    }
+
+    public static void main(String[] args) {
+        int number = 17; // Change this number to check if it's prime
+        
+        if (isPrime(number)) {
+            System.out.println(number + " is a prime number.");
+        } else {
+            System.out.println(number + " is not a prime number.");
+        }
+    }
+}
